@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const autoIncrement = require('mongoose-auto-increment');
-const { DATABASE_URL } = process.env;
+const { MONGODB_URI } = process.env;
 
 module.exports = function () {
     try {
-        mongoose.connect(DATABASE_URL, {
+        mongoose.connect(MONGODB_URI, {
             useCreateIndex: true,
             useUnifiedTopology: true,
             useNewUrlParser: true
