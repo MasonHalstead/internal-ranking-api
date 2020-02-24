@@ -1,6 +1,0 @@
-{"message":"::1 - - [18/Feb/2020:00:12:13 +0000] \"GET /v1/lists/user-types HTTP/1.1\" 200 475 \"-\" \"PostmanRuntime/7.22.0\"\n","level":"info"}
-{"message":"::1 - - [18/Feb/2020:00:31:52 +0000] \"GET /v1/lists/state-types HTTP/1.1\" 200 489 \"-\" \"PostmanRuntime/7.22.0\"\n","level":"info"}
-{"message":"::1 - - [18/Feb/2020:00:47:17 +0000] \"GET /v1/users/teams HTTP/1.1\" 401 64 \"-\" \"PostmanRuntime/7.22.0\"\n","level":"info"}
-{"message":"::1 - - [18/Feb/2020:00:47:45 +0000] \"GET /v1/users/teams HTTP/1.1\" 401 23 \"-\" \"PostmanRuntime/7.22.0\"\n","level":"info"}
-{"message":"::1 - - [18/Feb/2020:00:48:06 +0000] \"GET /v1/users/teams HTTP/1.1\" 401 23 \"-\" \"PostmanRuntime/7.22.0\"\n","level":"info"}
-{"message":"::1 - - [18/Feb/2020:00:50:10 +0000] \"GET /v1/users/teams HTTP/1.1\" 200 2 \"-\" \"PostmanRuntime/7.22.0\"\n","level":"info"}

@@ -1,13 +1,13 @@
 {
   "name": "internal_ranking",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "server.js",
   "author": "Mason Halstead",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "NODE_ENV='development' nodemon --watch src src/server.js"
+    "start": "node server.js",
+    "dev": "NODE_ENV='development' nodemon --watch src server.js"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
