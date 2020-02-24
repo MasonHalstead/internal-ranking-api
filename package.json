@@ -9,6 +9,14 @@
     "start": "node server.js",
     "dev": "NODE_ENV='development' nodemon --watch src server.js"
   },
+  "engines": {
+    "node": "12.x"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    }
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
