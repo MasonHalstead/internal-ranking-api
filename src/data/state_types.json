@@ -1,0 +1,13 @@
+[{
+    "state_type": "active",
+    "state_level": 0
+}, {
+    "state_type": "pending",
+    "state_level": 1
+}, {
+    "state_type": "archived",
+    "state_level": 2
+}, {
+    "state_type": "retired",
+    "state_level": 3
+}]

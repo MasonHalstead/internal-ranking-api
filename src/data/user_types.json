@@ -1,0 +1,13 @@
+[{
+    "user_type": "user",
+    "user_level": 0
+}, {
+    "user_type": "memeber",
+    "user_level": 1
+}, {
+    "user_type": "owner",
+    "user_level": 2
+}, {
+    "user_type": "admin",
+    "user_level": 99
+}]
