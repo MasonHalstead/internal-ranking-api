@@ -4,6 +4,7 @@ const path = require('path');
 const prettier = JSON.parse(fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'));
 
 module.exports = {
+  parser: 'babel-eslint',
   env: {
     browser: true,
     commonjs: true,
