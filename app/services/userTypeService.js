@@ -1,5 +1,5 @@
 const { UserTypeModel } = require('../models/UserTypeModel');
-const user_types = require('../data/user_types.json');
+const user_types = require('../data/user_types.json.js');
 
 const UserTypeService = {
   async insertAll() {

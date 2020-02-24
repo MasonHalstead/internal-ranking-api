@@ -1,5 +1,5 @@
 const { StateTypeModel } = require('../models/StateTypeModel');
-const state_types = require('../data/state_types.json');
+const state_types = require('../data/state_types.json.js');
 
 const stateTypeService = {
   async insertAll() {
