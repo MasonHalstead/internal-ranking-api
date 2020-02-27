@@ -15,4 +15,4 @@ const UserTypeService = {
   },
 };
 
-module.exports = UserTypeService;
+module.exports.UserTypeService = UserTypeService;
