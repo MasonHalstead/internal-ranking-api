@@ -6,8 +6,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node server.js",
-    "dev": "NODE_ENV='development' nodemon --watch src server.js"
+    "start": "node src/server.js",
+    "dev": "NODE_ENV='development' nodemon --watch src src/server.js"
   },
   "engines": {
     "node": "12.x"
