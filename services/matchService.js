@@ -1,6 +1,6 @@
 const { MatchModel } = require('../models/matchModel');
 
-const MatchService = {
+const matchService = {
   async getAll() {
     return MatchModel.find();
   },
@@ -27,4 +27,4 @@ const MatchService = {
   },
 };
 
-module.exports = MatchService;
+module.exports = matchService;

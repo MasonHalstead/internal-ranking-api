@@ -1,6 +1,6 @@
-const { OrganizationMemberModel } = require('../models/OrganizationMemberModel');
+const { OrganizationMemberModel } = require('../models/organizationMemberModel');
 
-const OrganizationMemberService = {
+const organizationMemberService = {
   async getAll() {
     return OrganizationMemberModel.find();
   },
@@ -28,4 +28,4 @@ const OrganizationMemberService = {
   },
 };
 
-module.exports = OrganizationMemberService;
+module.exports = organizationMemberService;

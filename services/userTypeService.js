@@ -1,7 +1,7 @@
 const user_types = require('../data/user_types.json');
-const { UserTypeModel } = require('../models/UserTypeModel');
+const { UserTypeModel } = require('../models/userTypeModel');
 
-const UserTypeService = {
+const userTypeService = {
   async insertAll() {
     try {
       await UserTypeModel.collection.drop();
@@ -15,4 +15,4 @@ const UserTypeService = {
   },
 };
 
-module.exports.UserTypeService = UserTypeService;
+module.exports = userTypeService;

@@ -1,6 +1,6 @@
-const { TeamMemberModel } = require('../models/TeamMemberModel');
+const { TeamMemberModel } = require('../models/teamMemberModel');
 
-const TeamMemberService = {
+const teamMemberService = {
   async getAll() {
     return TeamMemberModel.find();
   },
@@ -35,4 +35,4 @@ const TeamMemberService = {
   },
 };
 
-module.exports = TeamMemberService;
+module.exports = teamMemberService;

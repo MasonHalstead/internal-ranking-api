@@ -1,6 +1,6 @@
-const { RankingModel } = require('../models/RankingModel');
+const { RankingModel } = require('../models/rankingModel');
 
-const RankingService = {
+const rankingService = {
   async getAll() {
     return RankingModel.find();
   },
@@ -41,4 +41,4 @@ const RankingService = {
   },
 };
 
-module.exports = RankingService;
+module.exports = rankingService;

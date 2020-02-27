@@ -53,4 +53,4 @@ rankingSchema.methods.validateCreate = req => {
 };
 
 rankingSchema.plugin(autoIncrement.plugin, 'rankings');
-module.exports.rankingModel = mongoose.model('rankings', rankingSchema);
+module.exports.RankingModel = mongoose.model('rankings', rankingSchema);

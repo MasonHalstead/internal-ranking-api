@@ -1,7 +1,7 @@
-const { StateTypeModel } = require('../models/StateTypeModel');
+const { StateTypeModel } = require('../models/stateTypeModel');
 const state_types = require('../data/state_types.json');
 
-const StateTypeService = {
+const stateTypeService = {
   async insertAll() {
     try {
       await StateTypeModel.collection.drop();
@@ -15,4 +15,4 @@ const StateTypeService = {
   },
 };
 
-module.exports.StateTypeService = StateTypeService;
+module.exports = stateTypeService;

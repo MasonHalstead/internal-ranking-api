@@ -1,7 +1,7 @@
-const { UserTypeService } = require('../services/userTypeService');
-const { StateTypeService } = require('../services/stateTypeService');
+const userTypeService = require('../services/userTypeService');
+const stateTypeService = require('../services/stateTypeService');
 
 module.exports = () => {
-  UserTypeService.insertAll();
-  StateTypeService.insertAll();
+  userTypeService.insertAll();
+  stateTypeService.insertAll();
 };

@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const { UserModel } = require('../models/userModel');
 
-const UserService = {
+const userService = {
   async register(payload) {
     const user = await new UserModel(payload);
     await user.validateRegistration(payload);
@@ -35,4 +35,4 @@ const UserService = {
   },
 };
 
-module.exports = UserService;
+module.exports = userService;

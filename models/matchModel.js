@@ -31,4 +31,4 @@ matchSchema.methods.validateCreate = req => {
 };
 
 matchSchema.plugin(autoIncrement.plugin, 'matches');
-module.exports.matchModel = mongoose.model('matches', matchSchema);
+module.exports.MatchModel = mongoose.model('matches', matchSchema);

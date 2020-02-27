@@ -1,6 +1,6 @@
-const { TeamModel } = require('../models/TeamModel');
+const { TeamModel } = require('../models/teamModel');
 
-const TeamService = {
+const teamService = {
   async getAll() {
     return TeamModel.find();
   },
@@ -26,4 +26,4 @@ const TeamService = {
   },
 };
 
-module.exports = TeamService;
+module.exports = teamService;

@@ -1,6 +1,6 @@
-const { GameModel } = require('../models/GameModel');
+const { GameModel } = require('../models/gameModel');
 
-const GameService = {
+const gameService = {
   async getAll() {
     return GameModel.find();
   },
@@ -24,4 +24,4 @@ const GameService = {
   },
 };
 
-module.exports = GameService;
+module.exports = gameService;

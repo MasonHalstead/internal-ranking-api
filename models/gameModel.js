@@ -70,4 +70,4 @@ gameSchema.methods.validateCreate = req => {
 };
 
 gameSchema.plugin(autoIncrement.plugin, 'games');
-module.exports.gameModel = mongoose.model('games', gameSchema);
+module.exports.GameModel = mongoose.model('games', gameSchema);
