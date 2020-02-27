@@ -1,11 +1,11 @@
 const express = require('express');
 const auth = require('../../middleware/auth');
 const router = express.Router();
-const RankingService = require('../../services/RankingService');
+const rankingService = require('../../services/rankingService');
 
 router.get('/', auth, async (req, res) => {
   try {
-    const rankings = await RankingService.getAll();
+    const rankings = await rankingService.getAll();
     res.status(200).send(rankings);
   } catch (err) {
     res.status(401).send(err.message);
@@ -14,7 +14,7 @@ router.get('/', auth, async (req, res) => {
 
 router.get('/:_id', auth, async (req, res) => {
   try {
-    const rankings = await RankingService.getById(req.params);
+    const rankings = await rankingService.getById(req.params);
     res.status(200).send(rankings);
   } catch (err) {
     res.status(401).send(err.message);
@@ -23,7 +23,7 @@ router.get('/:_id', auth, async (req, res) => {
 
 router.delete('/:_id', auth, async (req, res) => {
   try {
-    const rankings = await RankingService.deleteById(req.params);
+    const rankings = await rankingService.deleteById(req.params);
     res.status(200).send(rankings);
   } catch (err) {
     res.status(401).send(err.message);
@@ -32,7 +32,7 @@ router.delete('/:_id', auth, async (req, res) => {
 
 router.post('/', auth, async (req, res) => {
   try {
-    const rankings = await RankingService.create(req.body);
+    const rankings = await rankingService.create(req.body);
     res.status(200).send(rankings);
   } catch (err) {
     res.status(401).send(err.message);
