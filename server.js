@@ -6,7 +6,7 @@ const server = http.createServer(app);
 const { PRIVATE_KEY, NODE_ENV } = process.env;
 
 require('./startup/config')(PRIVATE_KEY);
-// require('./startup/favicon')(app);
+require('./startup/favicon')(app);
 require('./startup/errors')(app);
 // require('./startup/routes')(app);
 // require('./startup/lookups')();
