@@ -6,8 +6,20 @@ const userService = {
     const user = await new UserModel(payload);
     await user.validateRegistration(payload);
     user.password = await user.hashPassword(user.password);
-    await UserModel.create(user);
-    return user.generateToken(user);
+    user.avatar = await user.randomizeAvatar();
+    const new_user = await UserModel.create(user);
+    return user.generateToken(new_user);
+  },
+  async update(_id, payload) {
+    const user = await new UserModel();
+    await user.validateUpdate(payload);
+    const updated_user = await UserModel.findByIdAndUpdate({ _id }, { ...payload, updated_at: new Date() }, { new: true });
+    return updated_user;
+  },
+  async getToken(payload) {
+    const user = await new UserModel();
+    const found_user = await this.getById(payload);
+    return user.generateToken(found_user);
   },
   async login(payload) {
     const user = await new UserModel();

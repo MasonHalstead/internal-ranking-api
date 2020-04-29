@@ -7,6 +7,7 @@ const matchService = require('../../services/matchService');
 const organizationService = require('../../services/organizationService');
 const rankingService = require('../../services/rankingService');
 const teamService = require('../../services/teamService');
+const friendService = require('../../services/friendService');
 
 router.get('/me', auth, async (req, res) => {
   try {
@@ -29,6 +30,29 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
   try {
     const token = await userService.register(req.body);
+    res.status(200).send(token);
+  } catch (err) {
+    if (err.code === 11000) {
+      res.status(401).send('Internal Ranking account already exists');
+    }
+    if (err.code !== 11000) {
+      res.status(401).send(err.message);
+    }
+  }
+});
+
+router.put('/update', auth, async (req, res) => {
+  try {
+    const user = await userService.update(req.user._id, req.body);
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(401).send(err.message);
+  }
+});
+
+router.get('/token', auth, async (req, res) => {
+  try {
+    const token = await userService.getToken(req.user);
     res.status(200).send(token);
   } catch (err) {
     res.status(401).send(err.message);
@@ -75,6 +99,16 @@ router.get('/rankings', auth, async (req, res) => {
   try {
     const rankings = await rankingService.getByUser(req.user);
     res.status(200).send(rankings);
+  } catch (err) {
+    res.status(401).send(err.message);
+  }
+});
+
+router.get('/friends', auth, async (req, res) => {
+  try {
+    const sent_friends = await friendService.getByUser(req.user);
+    const accepted_friends = await friendService.getByFriend(req.user);
+    res.status(200).send([...sent_friends, ...accepted_friends]);
   } catch (err) {
     res.status(401).send(err.message);
   }

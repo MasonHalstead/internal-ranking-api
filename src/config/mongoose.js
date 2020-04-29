@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 const { MONGODB_URI } = process.env;
 
-module.exports = function() {
+module.exports = () => {
   try {
     mongoose.connect(MONGODB_URI, {
       useCreateIndex: true,
@@ -14,6 +14,6 @@ module.exports = function() {
     db.once('open', () => console.log('successfully connected to the database'));
     return mongoose;
   } catch {
-    console.log('error occurred from the database');
+    throw Error('error occurred from the database');
   }
 };

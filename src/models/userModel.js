@@ -2,6 +2,7 @@ const Joi = require('joi');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const autoIncrement = require('mongoose-auto-increment');
+const avatars = require('../data/avatars.json');
 const mongoose = require('../config/mongoose')();
 const { Schema } = mongoose;
 const { PRIVATE_KEY } = process.env;
@@ -9,11 +10,11 @@ const { PRIVATE_KEY } = process.env;
 const userSchema = new Schema({
   first_name: {
     type: String,
-    required: true,
+    default: null,
   },
   last_name: {
     type: String,
-    required: true,
+    default: null,
   },
   password: {
     type: String,
@@ -41,6 +42,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
   read_access: {
     type: Boolean,
     default: false,
@@ -49,20 +54,24 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  telephone: {
-    type: Number,
-    default: null,
-  },
   created_at: {
     type: Date,
     default: Date.now,
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now,
+  },
+  avatar: {
+    type: String,
+    default: 'redpanda.svg',
   },
   user_type: {
     type: String,
     default: 'user',
   },
   user_level: {
-    type: String,
+    type: Number,
     default: 1,
   },
 });
@@ -72,6 +81,12 @@ userSchema.methods.hashPassword = async password => {
   return bcrypt.hash(password, salt);
 };
 
+userSchema.methods.randomizeAvatar = async () => {
+  const max = avatars.length - 1;
+  const index = Math.floor(Math.random() * Math.floor(max));
+  return avatars[index];
+};
+
 userSchema.methods.generateToken = user => {
   const token = jwt.sign(
     {
@@ -79,6 +94,7 @@ userSchema.methods.generateToken = user => {
       first_name: user.first_name,
       last_name: user.last_name,
       email_address: user.email_address,
+      avatar: user.avatar,
       user_type: user.user_type,
       user_level: user.user_level,
       read_access: user.read_access,
@@ -95,27 +111,32 @@ userSchema.methods.generateToken = user => {
 
 userSchema.methods.validateRegistration = req => {
   const schema = {
-    first_name: Joi.string().required(),
-    last_name: Joi.string().required(),
+    first_name: Joi.string().allow(''),
+    last_name: Joi.string().allow(''),
     password: Joi.string().required(),
     email_address: Joi.string().required(),
-    read_terms: Joi.boolean().required(),
+    read_terms: Joi.boolean(),
   };
   return Joi.validate(req, schema);
 };
 
 userSchema.methods.validateLogin = req => {
   const schema = {
-    email_address: Joi.string(),
-    password: Joi.string(),
+    email_address: Joi.string().required(),
+    password: Joi.string().required(),
   };
   return Joi.validate(req, schema);
 };
 
 userSchema.methods.validateUpdate = req => {
   const schema = {
-    first_name: Joi.string().required(),
-    password: Joi.string().required(),
+    first_name: Joi.string().allow(''),
+    last_name: Joi.string().allow(''),
+    organization_id: Joi.number(),
+    admin: Joi.boolean(),
+    write_access: Joi.boolean(),
+    read_access: Joi.boolean(),
+    avatar: Joi.string(),
   };
   return Joi.validate(req, schema);
 };
